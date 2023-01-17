@@ -21,6 +21,9 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-submit")
     WebElement submitBtn;
 
+    @FindBy(id = "login-response")
+    WebElement errorMsg;
+
     public void fillUsername(String Username) {
         wait.until(ExpectedConditions.visibilityOf(usernameInput));
         usernameInput.sendKeys(Username);
@@ -37,6 +40,14 @@ public class LoginPage extends BasePage {
 
     }
 
+    public void navigate(){
+        driver.get("http://localhost:3000/login");
+    }
 
+
+    public boolean isErrorMsgPresent(){
+        wait.until(ExpectedConditions.visibilityOf(errorMsg));
+        return errorMsg.isDisplayed();
+    }
 
 }

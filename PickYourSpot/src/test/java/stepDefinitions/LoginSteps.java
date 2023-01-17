@@ -15,7 +15,7 @@ public class LoginSteps {
     ProfilePage profile = new ProfilePage();
 
     @Given("I am on the home page")
-    public void i_am_on_the_login_page() {
+    public void i_am_on_the_home_page() {
         dashboardPage = new DashboardPage();
     }
 
@@ -42,6 +42,22 @@ public class LoginSteps {
         String current = profile.getProfileName();
         String expected = "Hello " + "b!";
         Assertions.assertEquals(expected, current);
+    }
+
+    @Given("I am on the login page")
+    public void i_am_on_the_login_page(){
+        login.navigate();
+    }
+
+    @When("I set the Username and Password with invalid data")
+    public void i_set_the_Username_and_Password_with_invalid_data(){
+        login.fillUsername("invalid-username");
+        login.fillPassword("invalid-password");
+    }
+
+    @Then("I got error message")
+    public void i_got_error_message(){
+        Assertions.assertTrue(login.isErrorMsgPresent());
     }
 
 }
