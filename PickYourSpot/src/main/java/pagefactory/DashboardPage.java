@@ -8,6 +8,7 @@ public class DashboardPage extends BasePage{
 
     public DashboardPage() {
         super();
+        System.out.println("dashboard page created");
     }
     @FindBy(id = "login")
     WebElement loginBtn;
@@ -24,5 +25,7 @@ public class DashboardPage extends BasePage{
         profileBtn.click();
     }
 
-
+    public void navigate(){
+        driver.get("http://localhost:3000/");
+    }
 }

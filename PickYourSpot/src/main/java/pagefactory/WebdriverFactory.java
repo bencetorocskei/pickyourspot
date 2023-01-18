@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class WebdriverFactory {
 
     private static WebDriver webDriver = null;
-    public static WebDriver createWebDriver() {
+    /*public static WebDriver createWebDriver() {
         if (webDriver == null){
             String webdriverType = System.getProperty("browser", "chrome");
             switch (webdriverType) {
@@ -17,10 +17,18 @@ public class WebdriverFactory {
             };
         }
         return webDriver;
+    }*/
+
+    public static WebDriver createWebDriver() {
+        if (webDriver == null) {
+            webDriver = new ChromeDriver();
+            System.out.println("driver is created");
+        }
+        return webDriver;
     }
 
-
-    public void shutdown() {
+    public static void shutdown() {
         webDriver.quit();
+        System.out.println("driver quit");
     }
 }

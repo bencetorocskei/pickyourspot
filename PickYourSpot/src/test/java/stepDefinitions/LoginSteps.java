@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,13 +12,21 @@ import pagefactory.ProfilePage;
 
 public class LoginSteps {
 
-    LoginPage login = new LoginPage();
+    LoginPage login;
     DashboardPage dashboardPage;
-    ProfilePage profile = new ProfilePage();
+    ProfilePage profile;
 
+
+    @Before
+    public void setup(){
+        System.out.println("setup");
+        login = new LoginPage();
+        dashboardPage = new DashboardPage();
+        profile  = new ProfilePage();
+    }
     @Given("I am on the home page")
     public void i_am_on_the_home_page() {
-        dashboardPage = new DashboardPage();
+        dashboardPage.navigate();
     }
 
     @When("I click on the Login button")
@@ -38,10 +48,10 @@ public class LoginSteps {
     @Then("I am on the Dashboard page")
     public void i_am_on_the_dashboard_page() {
         dashboardPage.clickOnTheProfileBtn();
-        System.out.println(profile.getProfileName());
         String current = profile.getProfileName();
         String expected = "Hello " + "b!";
         Assertions.assertEquals(expected, current);
+        System.out.println("successful");
     }
 
     @Given("I am on the login page")
@@ -58,6 +68,12 @@ public class LoginSteps {
     @Then("I got error message")
     public void i_got_error_message(){
         Assertions.assertTrue(login.isErrorMsgPresent());
+    }
+
+    @After
+    public void teardown(){
+        System.out.println("teardown");
+        dashboardPage.close();
     }
 
 }

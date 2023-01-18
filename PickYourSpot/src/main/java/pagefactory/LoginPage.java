@@ -8,9 +8,8 @@ public class LoginPage extends BasePage {
 
     public LoginPage() {
         super();
+        System.out.println("login page created");
     }
-
-
 
     @FindBy(id = "login-name")
     WebElement usernameInput;
