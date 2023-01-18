@@ -19,7 +19,7 @@ public class LoginSteps {
 
     @Before
     public void setup(){
-        System.out.println("setup");
+        System.out.println("before");
         login = new LoginPage();
         dashboardPage = new DashboardPage();
         profile  = new ProfilePage();
@@ -72,7 +72,7 @@ public class LoginSteps {
 
     @After
     public void teardown(){
-        System.out.println("teardown");
+        System.out.println("after");
         dashboardPage.close();
     }
 
