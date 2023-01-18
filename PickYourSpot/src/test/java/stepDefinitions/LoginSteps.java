@@ -50,6 +50,7 @@ public class LoginSteps {
         String current = profile.getProfileName();
         String expected = "Hello " + "b!";
         Assertions.assertEquals(expected, current);
+        System.out.println("successful");
     }
 
     @Given("I am on the login page")
@@ -84,7 +85,5 @@ public class LoginSteps {
         System.out.println("teardown");
         dashboardPage.close();
     }
-
-
 
 }
