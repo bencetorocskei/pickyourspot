@@ -82,7 +82,6 @@ public class LoginSteps {
 
     @After
     public void teardown(){
-        System.out.println("teardown");
         dashboardPage.close();
     }
 
