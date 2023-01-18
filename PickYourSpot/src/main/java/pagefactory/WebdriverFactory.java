@@ -22,13 +22,14 @@ public class WebdriverFactory {
     public static WebDriver createWebDriver() {
         if (webDriver == null) {
             webDriver = new ChromeDriver();
-            System.out.println("driver is created");
+
         }
         return webDriver;
     }
 
     public static void shutdown() {
         webDriver.quit();
-        System.out.println("driver quit");
+        webDriver = null;
+
     }
 }

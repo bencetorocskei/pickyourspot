@@ -9,6 +9,7 @@ import java.time.Duration;
 
 public class BasePage {
 
+
     WebDriver driver;
     WebDriverWait wait;
 
@@ -17,6 +18,8 @@ public class BasePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         PageFactory.initElements(driver, this);
     }
+
+
 
     public void close() {
         WebdriverFactory.shutdown();

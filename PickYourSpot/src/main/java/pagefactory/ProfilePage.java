@@ -8,7 +8,7 @@ public class ProfilePage extends BasePage{
 
     public ProfilePage() {
     super();
-        System.out.println("profil page created");
+
     }
 
     @FindBy (id = "profile-name")

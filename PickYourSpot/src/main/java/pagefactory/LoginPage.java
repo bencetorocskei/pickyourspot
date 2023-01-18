@@ -8,7 +8,7 @@ public class LoginPage extends BasePage {
 
     public LoginPage() {
         super();
-        System.out.println("login page created");
+
     }
 
     @FindBy(id = "login-name")
@@ -36,7 +36,13 @@ public class LoginPage extends BasePage {
     public void clickOnSubmitBtn() {
         wait.until(ExpectedConditions.visibilityOf(submitBtn));
         submitBtn.click();
+    }
 
+    public void login() {
+        navigate();
+        fillUsername("b");
+        fillPassword("b");
+        clickOnSubmitBtn();
     }
 
     public void navigate(){

@@ -19,7 +19,6 @@ public class LoginSteps {
 
     @Before
     public void setup(){
-        System.out.println("setup");
         login = new LoginPage();
         dashboardPage = new DashboardPage();
         profile  = new ProfilePage();
@@ -51,7 +50,6 @@ public class LoginSteps {
         String current = profile.getProfileName();
         String expected = "Hello " + "b!";
         Assertions.assertEquals(expected, current);
-        System.out.println("successful");
     }
 
     @Given("I am on the login page")
@@ -70,10 +68,23 @@ public class LoginSteps {
         Assertions.assertTrue(login.isErrorMsgPresent());
     }
 
+   @When ("I set the Username and Password as admin")
+   public void i_set_the_Username_and_Password_as_admin() {
+        login.fillUsername("Admin Antal");
+        login.fillPassword("password");
+   }
+
+   @Then("I am on the dashboard page and there is the admin button")
+   public void i_am_on_the_dashboard_page_and_there_is_the_admin_button() {
+        Assertions.assertTrue(dashboardPage.adminBtnIsPresent());
+   }
+
     @After
     public void teardown(){
         System.out.println("teardown");
         dashboardPage.close();
     }
+
+
 
 }

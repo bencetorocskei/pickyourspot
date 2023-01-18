@@ -16,9 +16,7 @@ Feature: Login
     Then I got error message
 
   Scenario: Admin user
-    Given admin credentials
     Given I am on the login page
-    When I set the Username input
-    And I set the Password
-    And press the Submit button
+    When I set the Username and Password as admin
+    And I click on the Submit button
     Then I am on the dashboard page and there is the admin button
